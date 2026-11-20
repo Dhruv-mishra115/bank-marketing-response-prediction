@@ -1,0 +1,1163 @@
+{
+  "project": {
+    "name": "Bank Marketing Response Prediction",
+    "description": "Experimental estimate of term-deposit subscription before a marketing call.",
+    "status": "Experimental model; not approved for real customer targeting.",
+    "dataset_source": "UCI Machine Learning Repository: Bank Marketing (bank-additional-full.csv)",
+    "dataset_url": "https://archive.ics.uci.edu/dataset/222/bank%2Bmarketing",
+    "target": "y",
+    "positive_class": "yes",
+    "excluded_features": [
+      "duration",
+      "campaign"
+    ]
+  },
+  "dataset": {
+    "records": 41188,
+    "predictor_count": 20,
+    "selected_feature_count": 18,
+    "numeric_feature_count": 8,
+    "categorical_feature_count": 10,
+    "target_counts": {
+      "yes": 4640,
+      "no": 36548
+    },
+    "target_rates": {
+      "yes": 0.11265417111780131,
+      "no": 0.8873458288821987
+    },
+    "missing_cells": 0,
+    "duplicate_rows": 12,
+    "unknown_counts": {
+      "job": 330,
+      "marital": 80,
+      "education": 1731,
+      "default": 8597,
+      "housing": 990,
+      "loan": 990
+    },
+    "monthly_rates": [
+      {
+        "month": "may",
+        "records": 13769,
+        "subscribers": 886,
+        "subscription_rate": 0.06434744716391895
+      },
+      {
+        "month": "jun",
+        "records": 5318,
+        "subscribers": 559,
+        "subscription_rate": 0.10511470477623167
+      },
+      {
+        "month": "jul",
+        "records": 7174,
+        "subscribers": 649,
+        "subscription_rate": 0.09046557011430165
+      },
+      {
+        "month": "aug",
+        "records": 6178,
+        "subscribers": 655,
+        "subscription_rate": 0.1060213661379087
+      },
+      {
+        "month": "oct",
+        "records": 718,
+        "subscribers": 315,
+        "subscription_rate": 0.4387186629526462
+      },
+      {
+        "month": "nov",
+        "records": 4101,
+        "subscribers": 416,
+        "subscription_rate": 0.10143867349426969
+      },
+      {
+        "month": "dec",
+        "records": 182,
+        "subscribers": 89,
+        "subscription_rate": 0.489010989010989
+      },
+      {
+        "month": "mar",
+        "records": 546,
+        "subscribers": 276,
+        "subscription_rate": 0.5054945054945055
+      },
+      {
+        "month": "apr",
+        "records": 2632,
+        "subscribers": 539,
+        "subscription_rate": 0.2047872340425532
+      },
+      {
+        "month": "sep",
+        "records": 570,
+        "subscribers": 256,
+        "subscription_rate": 0.44912280701754387
+      }
+    ],
+    "numeric_features": [
+      "age",
+      "pdays",
+      "previous",
+      "emp.var.rate",
+      "cons.price.idx",
+      "cons.conf.idx",
+      "euribor3m",
+      "nr.employed"
+    ],
+    "categorical_features": [
+      "job",
+      "marital",
+      "education",
+      "default",
+      "housing",
+      "loan",
+      "contact",
+      "month",
+      "day_of_week",
+      "poutcome"
+    ],
+    "category_options": {
+      "job": [
+        "admin.",
+        "blue-collar",
+        "entrepreneur",
+        "housemaid",
+        "management",
+        "retired",
+        "self-employed",
+        "services",
+        "student",
+        "technician",
+        "unemployed",
+        "unknown"
+      ],
+      "marital": [
+        "divorced",
+        "married",
+        "single",
+        "unknown"
+      ],
+      "education": [
+        "basic.4y",
+        "basic.6y",
+        "basic.9y",
+        "high.school",
+        "illiterate",
+        "professional.course",
+        "university.degree",
+        "unknown"
+      ],
+      "default": [
+        "no",
+        "unknown",
+        "yes"
+      ],
+      "housing": [
+        "no",
+        "unknown",
+        "yes"
+      ],
+      "loan": [
+        "no",
+        "unknown",
+        "yes"
+      ],
+      "contact": [
+        "cellular",
+        "telephone"
+      ],
+      "month": [
+        "aug",
+        "jul",
+        "jun",
+        "may",
+        "nov",
+        "oct"
+      ],
+      "day_of_week": [
+        "fri",
+        "mon",
+        "thu",
+        "tue",
+        "wed"
+      ],
+      "poutcome": [
+        "failure",
+        "nonexistent",
+        "success"
+      ]
+    },
+    "numeric_ranges": {
+      "age": {
+        "min": 18.0,
+        "max": 61.0,
+        "median": 39.0
+      },
+      "pdays": {
+        "min": 0.0,
+        "max": 999.0,
+        "median": 999.0
+      },
+      "previous": {
+        "min": 0.0,
+        "max": 2.0,
+        "median": 0.0
+      },
+      "emp.var.rate": {
+        "min": -0.1,
+        "max": 1.4,
+        "median": 1.4
+      },
+      "cons.price.idx": {
+        "min": 93.2,
+        "max": 94.465,
+        "median": 93.918
+      },
+      "cons.conf.idx": {
+        "min": -42.7,
+        "max": -36.1,
+        "median": -41.8
+      },
+      "euribor3m": {
+        "min": 4.076,
+        "max": 5.045,
+        "median": 4.959
+      },
+      "nr.employed": {
+        "min": 5191.0,
+        "max": 5228.1,
+        "median": 5228.1
+      }
+    },
+    "sample_profile": {
+      "age": 56,
+      "job": "housemaid",
+      "marital": "married",
+      "education": "basic.4y",
+      "default": "no",
+      "housing": "no",
+      "loan": "no",
+      "contact": "telephone",
+      "month": "may",
+      "day_of_week": "mon",
+      "pdays": 999,
+      "previous": 0,
+      "poutcome": "nonexistent",
+      "emp.var.rate": 1.1,
+      "cons.price.idx": 93.994,
+      "cons.conf.idx": -36.4,
+      "euribor3m": 4.857,
+      "nr.employed": 5191.0
+    }
+  },
+  "split": {
+    "training": {
+      "rows": 26360,
+      "subscriber_rate": 0.04787556904400607
+    },
+    "validation": {
+      "rows": 6590,
+      "subscriber_rate": 0.12716236722306526
+    },
+    "final_segment": {
+      "rows": 8238,
+      "subscriber_rate": 0.3083272638990046,
+      "status": "previously_exposed"
+    },
+    "order": "Original UCI file row order (documented as date ordered); no random shuffle"
+  },
+  "model": {
+    "selected_candidate": "random_forest_balanced",
+    "threshold": 0.5,
+    "selection_basis": "Highest validation Average Precision among tested candidates; diagnostic only",
+    "validation_precision_floor": 0.5,
+    "validation_precision_floor_met": false,
+    "validation_best_precision_with_positive_predictions": 0.1826,
+    "validation_comparison": [
+      {
+        "model": "random_forest_balanced",
+        "roc_auc": 0.5925809555501708,
+        "average_precision": 0.1571859504445779,
+        "precision": 0.1700060716454159,
+        "recall": 0.3341288782816229,
+        "f1": 0.22535211267605634,
+        "accuracy": 0.7078907435508346,
+        "brier_score": 0.22768258077373782,
+        "actual_subscriber_rate": 0.12716236722306526,
+        "mean_predicted_probability": 0.4698636577081249,
+        "threshold": 0.5,
+        "confusion_matrix": [
+          [
+            4385,
+            1367
+          ],
+          [
+            558,
+            280
+          ]
+        ]
+      },
+      {
+        "model": "random_forest_unweighted",
+        "roc_auc": 0.5999771585103946,
+        "average_precision": 0.15684543115109023,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.8728376327769347,
+        "brier_score": 0.11614179352213237,
+        "actual_subscriber_rate": 0.12716236722306526,
+        "mean_predicted_probability": 0.05230985827805747,
+        "threshold": 0.5,
+        "confusion_matrix": [
+          [
+            5752,
+            0
+          ],
+          [
+            838,
+            0
+          ]
+        ]
+      },
+      {
+        "model": "random_forest_balanced_larger_leaf",
+        "roc_auc": 0.5876954492947976,
+        "average_precision": 0.15496431043337966,
+        "precision": 0.16692996313849395,
+        "recall": 0.37828162291169454,
+        "f1": 0.23164048227986847,
+        "accuracy": 0.6808801213960546,
+        "brier_score": 0.23310006394540875,
+        "actual_subscriber_rate": 0.12716236722306526,
+        "mean_predicted_probability": 0.47746890677021875,
+        "threshold": 0.5,
+        "confusion_matrix": [
+          [
+            4170,
+            1582
+          ],
+          [
+            521,
+            317
+          ]
+        ]
+      },
+      {
+        "model": "random_forest_balanced_shallower",
+        "roc_auc": 0.5844457754239679,
+        "average_precision": 0.15468207512536641,
+        "precision": 0.16149732620320856,
+        "recall": 0.360381861575179,
+        "f1": 0.22304283604135894,
+        "accuracy": 0.6807283763277694,
+        "brier_score": 0.23067103397779798,
+        "actual_subscriber_rate": 0.12716236722306526,
+        "mean_predicted_probability": 0.47393622615208764,
+        "threshold": 0.5,
+        "confusion_matrix": [
+          [
+            4184,
+            1568
+          ],
+          [
+            536,
+            302
+          ]
+        ]
+      },
+      {
+        "model": "decision_tree",
+        "roc_auc": 0.5661714427025071,
+        "average_precision": 0.14411124670757486,
+        "precision": 0.14672594987873888,
+        "recall": 0.8663484486873508,
+        "f1": 0.2509505703422053,
+        "accuracy": 0.3423368740515933,
+        "brier_score": 0.268123148376441,
+        "actual_subscriber_rate": 0.12716236722306526,
+        "mean_predicted_probability": 0.5161798634135054,
+        "threshold": 0.5,
+        "confusion_matrix": [
+          [
+            1530,
+            4222
+          ],
+          [
+            112,
+            726
+          ]
+        ]
+      },
+      {
+        "model": "logistic_regression",
+        "roc_auc": 0.5730899660095399,
+        "average_precision": 0.13582893307526506,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.8728376327769347,
+        "brier_score": 0.1265990033790895,
+        "actual_subscriber_rate": 0.12716236722306526,
+        "mean_predicted_probability": 0.006659976706177436,
+        "threshold": 0.5,
+        "confusion_matrix": [
+          [
+            5752,
+            0
+          ],
+          [
+            838,
+            0
+          ]
+        ]
+      },
+      {
+        "model": "class_weighted_logistic",
+        "roc_auc": 0.5729132089782614,
+        "average_precision": 0.13536097774512285,
+        "precision": 0.02702702702702703,
+        "recall": 0.002386634844868735,
+        "f1": 0.0043859649122807015,
+        "accuracy": 0.8622154779969651,
+        "brier_score": 0.15104754648954194,
+        "actual_subscriber_rate": 0.12716236722306526,
+        "mean_predicted_probability": 0.08358174318954714,
+        "threshold": 0.5,
+        "confusion_matrix": [
+          [
+            5680,
+            72
+          ],
+          [
+            836,
+            2
+          ]
+        ]
+      },
+      {
+        "model": "calibrated_random_forest",
+        "roc_auc": 0.47808627734754916,
+        "average_precision": 0.11845148076005578,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.8728376327769347,
+        "brier_score": 0.11701328575160415,
+        "actual_subscriber_rate": 0.12716236722306526,
+        "mean_predicted_probability": 0.050010207792159235,
+        "threshold": 0.5,
+        "confusion_matrix": [
+          [
+            5752,
+            0
+          ],
+          [
+            838,
+            0
+          ]
+        ]
+      }
+    ],
+    "threshold_curve": [
+      {
+        "threshold": 0.0,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.025,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.05,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.07500000000000001,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.1,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.125,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.15000000000000002,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.17500000000000002,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.2,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.225,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.275,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.30000000000000004,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.325,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.35000000000000003,
+        "precision": 0.12716236722306526,
+        "recall": 1.0,
+        "f1": 0.22563274098007538,
+        "predicted_subscriber_rate": 1.0
+      },
+      {
+        "threshold": 0.375,
+        "precision": 0.1278608483368935,
+        "recall": 1.0,
+        "f1": 0.22673160173160173,
+        "predicted_subscriber_rate": 0.9945371775417299
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.13015771865540862,
+        "recall": 0.9749403341288783,
+        "f1": 0.22965565706254393,
+        "predicted_subscriber_rate": 0.9525037936267071
+      },
+      {
+        "threshold": 0.42500000000000004,
+        "precision": 0.13992537313432835,
+        "recall": 0.8949880668257757,
+        "f1": 0.2420135527589545,
+        "predicted_subscriber_rate": 0.8133535660091047
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.14850781620085268,
+        "recall": 0.7482100238663485,
+        "f1": 0.24782608695652175,
+        "predicted_subscriber_rate": 0.6406676783004552
+      },
+      {
+        "threshold": 0.47500000000000003,
+        "precision": 0.16361120719474231,
+        "recall": 0.5644391408114559,
+        "f1": 0.2536873156342183,
+        "predicted_subscriber_rate": 0.43869499241274656
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.1700060716454159,
+        "recall": 0.3341288782816229,
+        "f1": 0.22535211267605634,
+        "predicted_subscriber_rate": 0.24992412746585735
+      },
+      {
+        "threshold": 0.525,
+        "precision": 0.17258261933904528,
+        "recall": 0.16825775656324582,
+        "f1": 0.17039274924471298,
+        "predicted_subscriber_rate": 0.12397572078907436
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.16422287390029325,
+        "recall": 0.06682577565632458,
+        "f1": 0.09499575911789652,
+        "predicted_subscriber_rate": 0.05174506828528073
+      },
+      {
+        "threshold": 0.5750000000000001,
+        "precision": 0.041666666666666664,
+        "recall": 0.0059665871121718375,
+        "f1": 0.010438413361169102,
+        "predicted_subscriber_rate": 0.018209408194233688
+      },
+      {
+        "threshold": 0.6000000000000001,
+        "precision": 0.02702702702702703,
+        "recall": 0.002386634844868735,
+        "f1": 0.0043859649122807015,
+        "predicted_subscriber_rate": 0.011229135053110774
+      },
+      {
+        "threshold": 0.625,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.004400606980273141
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.675,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.7000000000000001,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.7250000000000001,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.775,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.8250000000000001,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.8500000000000001,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.875,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.925,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.9500000000000001,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 0.9750000000000001,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      },
+      {
+        "threshold": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "predicted_subscriber_rate": 0.0
+      }
+    ],
+    "final_segment_diagnostic": {
+      "roc_auc": 0.6959024854694147,
+      "average_precision": 0.48396209284439345,
+      "precision": 0.35139573070607555,
+      "recall": 0.926771653543307,
+      "f1": 0.5095789587617707,
+      "accuracy": 0.44998786113134254,
+      "brier_score": 0.2641629487318395,
+      "actual_subscriber_rate": 0.3083272638990046,
+      "mean_predicted_probability": 0.5667100108487516,
+      "predicted_subscriber_rate": 0.8131828113619811,
+      "confusion_matrix": [
+        [
+          1353,
+          4345
+        ],
+        [
+          186,
+          2354
+        ]
+      ],
+      "threshold": 0.5,
+      "classification_report": {
+        "no": {
+          "precision": 0.8791423001949318,
+          "recall": 0.23745173745173745,
+          "f1-score": 0.37391184192344895,
+          "support": 5698.0
+        },
+        "yes": {
+          "precision": 0.35139573070607555,
+          "recall": 0.926771653543307,
+          "f1-score": 0.5095789587617707,
+          "support": 2540.0
+        },
+        "accuracy": 0.44998786113134254,
+        "macro avg": {
+          "precision": 0.6152690154505036,
+          "recall": 0.5821116954975223,
+          "f1-score": 0.44174540034260984,
+          "support": 8238.0
+        },
+        "weighted avg": {
+          "precision": 0.7164236443923468,
+          "recall": 0.44998786113134254,
+          "f1-score": 0.4157417128592753,
+          "support": 8238.0
+        }
+      },
+      "selected_model": "random_forest_balanced",
+      "training_rows": 26360,
+      "validation_rows": 6590,
+      "final_test_rows": 8238,
+      "threshold_source": "default_0.5; business constraint not met on validation candidates",
+      "test_status": "previously_exposed"
+    },
+    "feature_importance": [
+      {
+        "feature": "num__euribor3m",
+        "importance": 0.14276925053940429,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "num__cons.conf.idx",
+        "importance": 0.14008180406414592,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "num__cons.price.idx",
+        "importance": 0.10009666608278306,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "num__emp.var.rate",
+        "importance": 0.0900303993304093,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "num__nr.employed",
+        "importance": 0.07000256883959433,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__month_apr",
+        "importance": 0.0492149284480101,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "num__age",
+        "importance": 0.04559049056898196,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__contact_cellular",
+        "importance": 0.03963792917627777,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__month_may",
+        "importance": 0.03111965097789216,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__contact_telephone",
+        "importance": 0.02523074342034012,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__month_oct",
+        "importance": 0.019883677276342694,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__month_mar",
+        "importance": 0.01969874695743932,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__default_unknown",
+        "importance": 0.018304269642823116,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__default_no",
+        "importance": 0.017469659071202567,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__day_of_week_mon",
+        "importance": 0.013532295345565364,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__day_of_week_fri",
+        "importance": 0.012534851973220079,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__poutcome_failure",
+        "importance": 0.011958341132592955,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_blue-collar",
+        "importance": 0.009501989247294234,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__education_university.degree",
+        "importance": 0.008614338605690554,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__day_of_week_thu",
+        "importance": 0.008417766431661785,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__marital_single",
+        "importance": 0.007942698672687563,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "num__pdays",
+        "importance": 0.005984177005618949,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__day_of_week_tue",
+        "importance": 0.005938828592179151,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__day_of_week_wed",
+        "importance": 0.005861874064809369,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__housing_no",
+        "importance": 0.005658548750791662,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__education_basic.9y",
+        "importance": 0.0056383544558982505,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__education_basic.4y",
+        "importance": 0.0056292009630332165,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__poutcome_success",
+        "importance": 0.005548999745782917,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__marital_married",
+        "importance": 0.005490266531375637,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__month_jul",
+        "importance": 0.00542208395665842,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__housing_yes",
+        "importance": 0.005046167705367419,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_services",
+        "importance": 0.004891071703236613,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__month_jun",
+        "importance": 0.0046809307929036445,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__education_high.school",
+        "importance": 0.004501887984521654,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_admin.",
+        "importance": 0.004378735265906235,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__month_aug",
+        "importance": 0.004189181013000861,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "num__previous",
+        "importance": 0.004015700882154111,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__month_nov",
+        "importance": 0.004013957440857815,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__loan_no",
+        "importance": 0.003605933049187871,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__poutcome_nonexistent",
+        "importance": 0.0034703933679220266,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__loan_yes",
+        "importance": 0.003039157192115099,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_technician",
+        "importance": 0.0028938135573885215,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_retired",
+        "importance": 0.0027983258627177453,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_housemaid",
+        "importance": 0.002482041078133325,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__education_professional.course",
+        "importance": 0.0023417778167727503,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__marital_divorced",
+        "importance": 0.002075135419264987,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_management",
+        "importance": 0.0017445220164330458,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__education_basic.6y",
+        "importance": 0.001681289472586996,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_self-employed",
+        "importance": 0.001063160275429696,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__housing_unknown",
+        "importance": 0.0009548731484217373,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_entrepreneur",
+        "importance": 0.0009283105329424781,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__loan_unknown",
+        "importance": 0.0008585947663719461,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__education_unknown",
+        "importance": 0.000730355261117799,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_student",
+        "importance": 0.0004291944073194863,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_unemployed",
+        "importance": 0.0003800901174193773,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__job_unknown",
+        "importance": 0.0,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__marital_unknown",
+        "importance": 0.0,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__default_yes",
+        "importance": 0.0,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__education_illiterate",
+        "importance": 0.0,
+        "interpretation": "tree_importance"
+      },
+      {
+        "feature": "cat__month_dec",
+        "importance": 0.0,
+        "interpretation": "tree_importance"
+      }
+    ],
+    "calibration_note": "Balanced Random Forest validation mean predicted probability was about 0.47 vs 0.127 observed; unweighted and chronological sigmoid-calibrated variants did not meet the operating objective."
+  },
+  "schema": {
+    "feature_names": [
+      "age",
+      "job",
+      "marital",
+      "education",
+      "default",
+      "housing",
+      "loan",
+      "contact",
+      "month",
+      "day_of_week",
+      "pdays",
+      "previous",
+      "poutcome",
+      "emp.var.rate",
+      "cons.price.idx",
+      "cons.conf.idx",
+      "euribor3m",
+      "nr.employed"
+    ],
+    "numeric_features": [
+      "age",
+      "pdays",
+      "previous",
+      "emp.var.rate",
+      "cons.price.idx",
+      "cons.conf.idx",
+      "euribor3m",
+      "nr.employed"
+    ],
+    "categorical_features": [
+      "job",
+      "marital",
+      "education",
+      "default",
+      "housing",
+      "loan",
+      "contact",
+      "month",
+      "day_of_week",
+      "poutcome"
+    ],
+    "excluded_features": [
+      "duration",
+      "campaign"
+    ]
+  }
+}

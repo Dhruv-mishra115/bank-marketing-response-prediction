@@ -1,0 +1,52 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# Local raw data; obtain it from the UCI source documented in README.md
+/data/raw/
+
+# Keep the small, project-selected artifact so the API can run without retraining.
+/models/*.joblib
+!/models/selected_model.joblib
+
+# Generated dashboard screenshots
+/reports/figures/*.png
+
+# Local environment variables and credentials
+.env
+.env.*
+!.env.example
+!**/.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.credentials
+*.secret
+*.token
+secrets.*
+credentials.*
+.aws/
+.ssh/
+secrets/
+
+# OS and editor temporary files
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+.Rhistory
+*.swp
+*.swo
+*~
+.idea/
+.vscode/*.log
+
+# Frontend dependencies and build output
+node_modules/
+frontend/dist/
