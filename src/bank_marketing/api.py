@@ -73,7 +73,9 @@ def create_app(artifact_path: str | Path | None = None, metrics_path: str | Path
     @app.get("/healthz")
     def health_check():
         loaded = getattr(app.state, "model_artifact", None) is not None
-        return {"status": "ok" if loaded else "model_not_loaded", "model_loaded": loaded}
+        if not loaded:
+            raise HTTPException(status_code=503, detail="Prediction model is not available")
+        return {"status": "ok", "model_loaded": True}
 
     @app.get("/dashboard/metrics")
     def dashboard_metrics():

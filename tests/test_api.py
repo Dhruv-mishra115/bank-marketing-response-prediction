@@ -1,7 +1,9 @@
 import tempfile
 import unittest
 import json
+import os
 from pathlib import Path
+from unittest.mock import patch
 
 import joblib
 import pandas as pd
@@ -45,6 +47,8 @@ class ApiTests(unittest.TestCase):
     def test_health_when_artifact_is_missing(self):
         missing = self.path.parent / "missing.joblib"
         with TestClient(create_app(missing)) as client:
+            health = client.get("/healthz")
+            self.assertEqual(health.status_code, 503)
             response = client.post("/predict", json={"features": {"age": 27, "job": "a"}})
             self.assertEqual(response.status_code, 503)
 
@@ -66,6 +70,31 @@ class ApiTests(unittest.TestCase):
             )
             self.assertEqual(response.status_code, 200)
             self.assertEqual(response.headers["access-control-allow-origin"], "http://localhost:5173")
+
+    def test_cors_can_be_restricted_to_deployed_frontend_origin(self):
+        origin = "https://bank-marketing-dashboard.example.vercel.app"
+        with patch.dict(os.environ, {"BANK_MARKETING_CORS_ORIGINS": origin}):
+            with TestClient(create_app(self.path, self.metrics_path)) as client:
+                allowed = client.options(
+                    "/predict",
+                    headers={
+                        "Origin": origin,
+                        "Access-Control-Request-Method": "POST",
+                        "Access-Control-Request-Headers": "content-type",
+                    },
+                )
+                self.assertEqual(allowed.status_code, 200)
+                self.assertEqual(allowed.headers["access-control-allow-origin"], origin)
+
+                denied = client.options(
+                    "/predict",
+                    headers={
+                        "Origin": "https://untrusted.example",
+                        "Access-Control-Request-Method": "POST",
+                        "Access-Control-Request-Headers": "content-type",
+                    },
+                )
+                self.assertNotIn("access-control-allow-origin", denied.headers)
 
 
 if __name__ == "__main__":

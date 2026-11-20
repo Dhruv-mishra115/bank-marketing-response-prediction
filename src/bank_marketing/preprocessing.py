@@ -22,7 +22,12 @@ class DataSplits:
 
 
 def project_root() -> Path:
-    return Path(__file__).resolve().parents[2]
+    source_root = Path(__file__).resolve().parents[2]
+    if (source_root / "pyproject.toml").is_file():
+        return source_root
+    # In a non-editable install, this module lives in site-packages. Render runs
+    # the service from the repository root, where the model and reports reside.
+    return Path.cwd().resolve()
 
 
 def load_dataset(path: str | Path | None = None) -> pd.DataFrame:

@@ -6,6 +6,7 @@ __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 *.egg-info/
+/build/
 
 # Local raw data; obtain it from the UCI source documented in README.md
 /data/raw/

@@ -1,8 +1,11 @@
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
 import pandas as pd
 
-from bank_marketing.preprocessing import chronological_split, select_features
+from bank_marketing.preprocessing import chronological_split, project_root, select_features
 
 
 class PreprocessingTests(unittest.TestCase):
@@ -30,6 +33,12 @@ class PreprocessingTests(unittest.TestCase):
     def test_invalid_fraction_is_rejected(self):
         with self.assertRaises(ValueError):
             chronological_split(self.frame, 0.8, 0.2)
+
+    def test_project_root_falls_back_to_service_working_directory_for_installed_package(self):
+        with TemporaryDirectory() as temporary:
+            installed_module = Path(temporary) / "site-packages" / "bank_marketing" / "preprocessing.py"
+            with patch("bank_marketing.preprocessing.__file__", str(installed_module)):
+                self.assertEqual(project_root(), Path.cwd().resolve())
 
 
 if __name__ == "__main__":
