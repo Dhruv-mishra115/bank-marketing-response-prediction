@@ -1,10 +1,20 @@
 # Bank Marketing Response Prediction
 
+> **Live demo:** [Open the interactive dashboard](https://bank-marketing-response-prediction.vercel.app) · [API documentation](https://bank-marketing-response-prediction-hxxy.onrender.com/docs) · [Backend health](https://bank-marketing-response-prediction-hxxy.onrender.com/healthz)
+
 A learning project for estimating whether a client will subscribe to a term deposit. The model prediction point is **before the current marketing call begins**. This repository contains exploratory analysis, chronological model comparison, a reusable Scikit-learn pipeline, a saved experimental artifact, and a FastAPI prediction endpoint.
 
 ## Project status
 
-The API and training workflow are implemented and tested. The current model is **not ready for operational outreach**: no validation candidate met the requested precision floor of 0.50, the chronological segments have a large subscriber-rate shift, and the last segment was inspected and scored in earlier notebook work. Its current results are therefore post-exposure diagnostics, not an untouched final estimate.
+The dashboard is deployed on Vercel and its FastAPI backend is deployed on Render. The current model remains **experimental and is not ready for operational outreach**: no validation candidate met the requested 50% precision floor, the chronological segments have a large subscriber-rate shift, and the last segment was inspected and scored in earlier notebook work. Its current results are therefore post-exposure diagnostics, not an untouched final estimate.
+
+## Deployment architecture
+
+- **Frontend:** React and Vite build the interactive dashboard as a static site on [Vercel](https://bank-marketing-response-prediction.vercel.app).
+- **Backend:** [FastAPI on Render](https://bank-marketing-response-prediction-hxxy.onrender.com) serves health status, dashboard metrics, and predictions. Its interactive API reference is available at [`/docs`](https://bank-marketing-response-prediction-hxxy.onrender.com/docs).
+- **Model:** The backend loads the saved Scikit-learn preprocessing and Random Forest pipeline from the repository artifact. The browser sends feature inputs to the API; model inference stays on the backend.
+
+The frontend calls the backend over HTTPS using the configured API URL. Render's free web services can spin down after 15 minutes without inbound traffic. The first request after inactivity may take about a minute while the service starts again; this can make the dashboard's initial data load or prediction feel slow. See [Render's free service limitations](https://render.com/docs/free).
 
 ## Dataset and prediction setup
 
@@ -101,7 +111,7 @@ bank-marketing-ml/
 
 ## Setup and commands
 
-The raw UCI dataset is excluded from this repository. Download the Bank Marketing dataset from the [UCI dataset page](https://archive.ics.uci.edu/dataset/222/bank%2Bmarketing), extract `bank-additional-full.csv`, and place it at `data/raw/bank-additional-full.csv`. Keep the downloaded archive and extracted data local; the project does not automatically fetch or commit the dataset.
+The raw UCI dataset is excluded from this repository. Download the Bank Marketing dataset from the [UCI dataset page](https://archive.ics.uci.edu/dataset/222/bank%2Bmarketing), extract `bank-additional-full.csv`, and place it at `data/raw/bank-additional-full.csv`. Keep the downloaded archive and extracted data local; the project does not automatically fetch or commit the dataset. The raw dataset is needed to rerun analysis, training, or regenerate dashboard metrics; the local API can use the included model artifact and metrics report without it.
 
 From PowerShell in the project directory, create a Python 3.13 environment and install the project:
 
@@ -139,7 +149,7 @@ This exports `reports/dashboard_metrics.json`; it does not use the final segment
 
 ## FastAPI
 
-Start the local API from the project directory after generating the artifact:
+Start the local API from the project directory; the included model artifact and dashboard metrics are used by default:
 
 ```powershell
 uvicorn bank_marketing.api:app --reload
@@ -172,17 +182,18 @@ A prediction response contains `predicted_class`, `subscription_probability`, an
 
 ## React dashboard
 
-Install and run the frontend from a second terminal:
+Install and run the frontend from a second terminal. To connect it to the local backend, copy the example environment file and edit its API URL if needed:
 
 ```powershell
 cd frontend
 npm ci
+Copy-Item .env.example .env.local
 npm run dev
 ```
 
 Use Node.js with npm; `package-lock.json` records the frontend dependency versions, and `npm ci` installs from that lockfile.
 
-The Vite page uses `http://localhost:8000` by default. Copy `frontend/.env.example` to `frontend/.env.local` and set `VITE_API_BASE_URL` if the API runs elsewhere. The frontend requests dashboard evidence from `/dashboard/metrics` and sends every prediction to `/predict`; it does not contain a model copy or fabricate results.
+The Vite page uses `http://localhost:8000` by default. Set `VITE_API_BASE_URL` in `frontend/.env.local` if the API runs elsewhere. The frontend requests dashboard evidence from `/dashboard/metrics` and sends every prediction to `/predict`; it does not contain a model copy or fabricate results.
 
 Build and browser smoke-test (with FastAPI and Vite running; Chrome is required):
 
